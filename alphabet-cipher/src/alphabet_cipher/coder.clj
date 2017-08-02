@@ -1,5 +1,10 @@
 (ns alphabet-cipher.coder)
 
+
+(def alphabet
+  (mapv char (range 97 (+ 97 26))))
+
+
 (defn encode [keyword message]
   "encodeme")
 
