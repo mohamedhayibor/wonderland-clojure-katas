@@ -41,12 +41,16 @@
 (defn char-decoding
   "Takes a seed and cypher char and returns char message"
   [char-s char-c]
+  ;; todo: make more readable with ->>
   (if (pos? (- (int char-c) (int char-s)))
     (char (+ (- (int char-c) (int char-s)) 97))
     (char (+ 97 (- (+ (int char-c) 26) (int char-s))))))
 
-(defn decipher [cipher message]
-  "decypherme")
+(defn decipher
+  "Takes a cipher and seed then returns original"
+  [cipher msg]
+  ;; todo: make more readable with ->>
+  (apply str (map #(char-decoding (first %) (second %)) (map seq (seed-msg-letter-set cipher msg)))))
 
 (def letter-debugging
   (map (juxt char identity #(- % 97)) (range 97 (+ 97 26))))
