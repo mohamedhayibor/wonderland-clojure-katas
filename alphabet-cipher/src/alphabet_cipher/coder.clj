@@ -32,8 +32,6 @@
   [char-s char-m]
   (get-in (alphabet-cipher alphabet) [(- (int char-m) 97)  (- (int char-s) 97)]))
 
-
-
 (defn encode
   "encrypts letter by letter using keyword and message"
   [seed msg]
@@ -43,8 +41,9 @@
 (defn char-decoding
   "Takes a seed and cypher char and returns char message"
   [char-s char-c]
-
-)
+  (if (pos? (- (int char-c) (int char-s)))
+    (char (+ (- (int char-c) (int char-s)) 97))
+    (char (+ 97 (- (+ (int char-c) 26) (int char-s))))))
 
 (defn decipher [cipher message]
   "decypherme")
