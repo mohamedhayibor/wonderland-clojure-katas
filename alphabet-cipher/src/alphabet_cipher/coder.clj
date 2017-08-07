@@ -31,8 +31,8 @@
   ;; Todo: will be more specific about the string length later,
   ;; works for now
   (if (> (count seed) (count msg))
-    (mapv str seed (apply str (repeat (count seed) msg)))
-    (mapv str (apply str (repeat (count msg) seed)) msg)))
+    (mapv str seed (clojure.string/join (repeat (count seed) msg)))
+    (mapv str (clojure.string/join (repeat (count msg) seed)) msg)))
 
 
 (defn char-encoding
@@ -74,5 +74,4 @@
        (apply str)))
 
 (def letter-debugging
-  (->> (range 97 (+ 97 26))
-       (map (juxt char identity #(- % 97)))))
+       (map (juxt char identity #(- % 97)) (range 97 (+ 97 26))))
